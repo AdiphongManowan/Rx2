@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
+import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Maybe;
 import io.reactivex.Observable;
@@ -14,11 +15,13 @@ import io.reactivex.Single;
  * Created by adiphong on 27/11/2017 AD.
  */
 
-public class JustTest {
+public class fromArrayTest {
+
+    String[] testArray = {"hello", "world"};
 
     @Test
     public void flowableJust() {
-        Flowable.just("Hello", "World")
+        Flowable.fromArray(testArray)
                 .subscribe(
                         s -> System.out.println("---------------flowable  result " + s)
                 );
@@ -26,27 +29,10 @@ public class JustTest {
 
     @Test
     public void observableJust() {
-        Observable.just("Hello", "World")
+        Observable.fromArray(testArray)
                 .subscribe(
                         s -> System.out.println("---------------observable result " + s)
                 );
-    }
 
-    @Test
-    public void maybeJust() {
-        // can be only one data
-        Maybe.just("Hello")
-                .subscribe(
-                        s -> System.out.println("---------------maybe result " + s)
-                );
-    }
-
-    @Test
-    public void singleJust() {
-        // can be only one data
-        Single.just("Hello")
-                .subscribe(
-                        s -> System.out.println("---------------single result " + s)
-                );
     }
 }
