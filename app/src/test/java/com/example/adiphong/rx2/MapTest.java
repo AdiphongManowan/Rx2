@@ -16,7 +16,6 @@ import io.reactivex.Single;
 import io.reactivex.SingleEmitter;
 import io.reactivex.SingleOnSubscribe;
 
-
 /**
  * Created by adiphong on 28/11/2017 AD.
  */
