@@ -2,9 +2,6 @@ package com.example.adiphong.rx2;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.List;
-
 import io.reactivex.Flowable;
 import io.reactivex.Maybe;
 import io.reactivex.Observable;
