@@ -4,12 +4,13 @@
     android:id="@+id/content_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:showIn="@layout/activity_main"
+    tools:showIn="@layout/fragment_one"
     android:orientation="vertical">
 
-    <FrameLayout
-        android:id="@+id/frame_fragment"
+    <Button
+        android:id="@+id/next_button"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:text="Next"/>
 
 </LinearLayout>

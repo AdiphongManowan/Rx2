@@ -3,6 +3,9 @@ package com.example.adiphong.rx2;
 import org.junit.Test;
 import org.reactivestreams.Publisher;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableEmitter;
@@ -26,6 +29,28 @@ import io.reactivex.functions.Function;
  */
 
 public class FlatMapTest {
+    private int number;
+
+
+//    private List<Integer> numberList = new ArrayList<>();
+
+    @Test
+    public void testGG(){
+
+        System.out.println("----------- "+testNumberGG(100));
+
+    }
+
+
+    private List<Integer> testNumberGG(int number){
+        String numberString = String.valueOf(number);
+        List<Integer> numberList = new ArrayList<>();
+        for (int index = 0; index < numberString.length(); index++){
+            numberList.add(Integer.parseInt(String.valueOf(numberString.charAt(index))));
+        }
+
+        return numberList;
+    }
 
     //just
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -239,6 +264,34 @@ public class FlatMapTest {
                 .subscribe(
                         s -> System.out.println("---------------single result " + s)
                 );
+    }
+
+
+    @Test
+    public void createWithFatmap() {
+        int input = 0;
+        Observable.create(emitter -> {
+                    if (!emitter.isDisposed()) {
+                        int result = 1;
+//                        result /= input;
+
+                        emitter.onNext(result);
+                        emitter.onComplete();
+                    }
+                }
+        ).doOnError(
+                throwable -> System.out.println("--------- doOnError")
+        ).onErrorResumeNext(
+                Observable.never()
+        ).flatMap(o -> {
+            return Observable.error(new Exception());
+//            return Observable.just(1);
+        }).subscribe(
+                integer -> System.out.println("------------ on next " + integer),
+                throwable -> System.out.println("-------- on error " + throwable),
+                () -> System.out.println("---------- on complete")
+        );
+
     }
 
 }

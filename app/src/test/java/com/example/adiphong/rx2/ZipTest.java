@@ -4,6 +4,9 @@ import org.javatuples.Pair;
 import org.javatuples.Triplet;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableEmitter;
@@ -53,6 +56,28 @@ public class ZipTest {
                 Pair::with
         ).toList().subscribe(
                 s -> System.out.println("---------------observable result " + s)
+        );
+
+    }
+
+    @Test
+    public void observableJust2() {
+//        Observable<String> observable1 = Observable.fromIterable(Arrays.asList("test"));
+        Observable<String> observable1 = Observable.fromIterable(new ArrayList<>());
+        Observable<String> observable2 = Observable.fromIterable(Arrays.asList("hello", "world"));
+
+        Observable.concat(observable1, observable2)
+                .map(s -> s + "")
+                .subscribe();
+
+        Observable.zip(observable1,
+                observable2,
+                Pair::with
+        ).subscribe(
+                s -> System.out.println("--------------- result s.getValue0(): " + s.getValue0()
+                +", getValue1 "+ s.getValue1())
+                ,throwable -> System.out.println("----------- error")
+                ,() -> System.out.println("------------- complete")
         );
 
     }

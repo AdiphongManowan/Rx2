@@ -8,4 +8,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.DefaultEditText" parent="Widget.AppCompat.EditText">
+        <item name="colorControlNormal">@color/colorPrimaryLight</item>
+        <item name="colorControlActivated">@color/colorPrimaryLight</item>
+        <item name="colorAccent">@color/colorPrimaryLight</item>
+        <item name="android:background">@drawable/edit_text_bottom_border_grey</item>
+    </style>
+
+    <style name="AppTheme.YellowBorderEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/border_yellow</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
 </resources>

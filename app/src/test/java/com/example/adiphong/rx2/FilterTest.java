@@ -50,4 +50,14 @@ public class FilterTest {
                         s -> System.out.println("---------------single result " + s)
                 );
     }
+
+    @Test
+    public void singleJusts() {
+        // can be only one data
+        Single.just(false)
+                .filter(s -> s)
+                .subscribe(
+                        s -> System.out.println("---------------single result " + s)
+                );
+    }
 }
