@@ -179,8 +179,8 @@ class FlatMapTest {
         val input = 0
         Observable.create<Any> { emitter ->
             if (!emitter.isDisposed) {
-                val result = 1
-                //                        result /= input;
+                var result = 1
+//                result /= input
 
                 emitter.onNext(result)
                 emitter.onComplete()
@@ -189,7 +189,7 @@ class FlatMapTest {
                 Observable.never()
         ).flatMap {
             Observable.error<Any>(Exception())
-            //            return Observable.just(1);
+//            Observable.just(1)
         }.subscribe(
                 { integer -> println("------------ on next $integer") },
                 { throwable -> println("-------- on error $throwable") },

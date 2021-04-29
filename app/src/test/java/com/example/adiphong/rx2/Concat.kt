@@ -1,8 +1,7 @@
 package com.example.adiphong.rx2
 
-import org.junit.Test
-
 import io.reactivex.Observable
+import org.junit.Test
 
 class Concat {
 
@@ -11,8 +10,8 @@ class Concat {
         val input = 0
         val observable1 = Observable.create<Int> { emitter ->
             if (!emitter.isDisposed) {
-                val result = 1
-                // result /= input;
+                var result = 1
+//                 result /= input
                 emitter.onNext(result)
                 emitter.onComplete()
             }
@@ -20,8 +19,8 @@ class Concat {
 
         val observable2 = Observable.create<String> { emitter ->
             if (!emitter.isDisposed) {
-                val result = 2
-                //                result /= input;
+                var result = 2
+//                                result /= input;
                 emitter.onNext("" + result)
                 emitter.onComplete()
             }
